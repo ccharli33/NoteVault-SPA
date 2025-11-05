@@ -25,3 +25,11 @@ a{
 img{
     border-radius: 15px;
 }
+
+#container{
+    display: flex;
+}
+
+.box{
+    
+}
