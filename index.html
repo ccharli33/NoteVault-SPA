@@ -2,13 +2,13 @@
 <html>
 <head>
     <title>HTML</title>
-    <link rel="stylesheet" href="style.css">  
+    <link rel="stylesheet" href="style.css">
 </head>
     <header>
         <h1>This is the header</h1>
     </header>
     <main>
-        <div id="container">
+        <div class="container">
             <div class="box">
                 <p>This is the main</p>
                 <a href="https://www.youtube.com/">YouTube</a>
@@ -17,6 +17,16 @@
                     <img src="images/1.png" alt="photo of a phone taking a photo" width="150px" height="150px">
                 </div>
             </div>
+            <div class="box">
+                <button id="toggleButton">Toggle</button>
+                    <div id="content">
+                        <p>This is some text</p>
+                    </div>
+            </div>
+            <div class="box">
+                <button id="toggleMode">Toggle Mode</button>
+            </div>
         </div>
+    <script src="script.js"></script>
     </main>
 </html>

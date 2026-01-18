@@ -2,6 +2,29 @@ html{
     background-color: lightgrey;
 }
 
+/* Light mode */
+
+body{
+    background-color: white;
+    color: #333333;
+}
+
+button{
+    background-color: aqua;
+    color: black;
+}
+/* Dark mode */
+
+body.dark-mode{
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+}
+
+body.dark-mode.button{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
 h1{
     font-size: 36px;
     color: #333333;
@@ -26,10 +49,25 @@ img{
     border-radius: 15px;
 }
 
-#container{
+.container{
     display: flex;
+    padding: 70px;
+    min-height: 100%;
+    gap: 50px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: rgb(21, 255, 0);
 }
 
 .box{
-    
+    height: 500px;
+    width: 100%;
+    border-width: 10px;
+    border-style: solid;
+    border-color: blue;
+    padding: 10px;
+}
+
+#content{
+    display: none;
 }
