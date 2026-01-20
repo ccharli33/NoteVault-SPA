@@ -33,11 +33,7 @@ h1{
     margin-bottom: 20px;
 }
 
-.img{
-    padding: 15px;
-}
-
-img{
+#Home img{
     border-radius: 15px;
 }
 
