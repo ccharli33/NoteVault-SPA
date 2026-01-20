@@ -2,8 +2,9 @@
 <html>
 
 <head>
-    <title>HTML</title>
+    <title>NoteVault</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <!-- Navbar -->
@@ -28,7 +29,7 @@
 
         <div class="box">
             <div class="larger-text">
-                <p>Welcome to NoteVault</p>
+                <p><b>Welcome to NoteVault</b></p>
             </div>
             <div class="medium-text">
                 <p>Write it. Save it. Find it.</p>
@@ -39,7 +40,7 @@
     <div class="container">
         <div class="text-box">
             <div class="box">
-                <p>Welcome to Note Base — a fast, responsive note-taking app designed to help you store, sort, and manage your ideas with ease. Create sections, add notes, and filter your content instantly, all within a seamless single-page experience. Stay organised, stay productive.</p>
+                <p><br>Welcome to NoteVault — a fast, responsive note-taking app designed to help you store, sort, and manage your ideas with ease. Create sections, add notes, and filter your content instantly, all within a seamless single-page experience. Stay organised, stay productive.</p>
                 <div class="button">
                     <a href="#Notes">Click here to get started</a>
                 </div>
@@ -48,17 +49,14 @@
 </div>
 
 <div id="Notes">
-    <div class="container">
-        <div class="box">
-
-        </div>
-        <div class="box">
-            
-        </div>
+    <div class="larger-text">Your notes:</div>
+    <div class="container" id="notesContainer">
+        <!-- Here is where the notes are fetched from JSON file -->
     </div>
 </div>
 
 <div id="Add">
+    <div class="larger-text">Add notes:</div>
     <div class="container">
         <div class="box">
 
@@ -69,7 +67,7 @@
     </div>
 </div>
 
-<script src="script.js"></script>
+<script src="notes.js"></script>
 </html>
 
 <!-- Toggle text and mode -->
