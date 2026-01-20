@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
 html{
-    background-color: lightgrey;
+    scroll-behavior: smooth;
 }
 
 /* Light mode */
@@ -7,12 +9,9 @@ html{
 body{
     background-color: white;
     color: #333333;
+    font-family: 'Crimson Text', serif;
 }
 
-button{
-    background-color: aqua;
-    color: black;
-}
 /* Dark mode */
 
 body.dark-mode{
@@ -25,20 +24,13 @@ body.dark-mode.button{
     color: rgb(255, 255, 255);
 }
 
+/* Main */
+
 h1{
     font-size: 36px;
     color: #333333;
     text-align: center;
     margin-bottom: 20px;
-}
-
-a{
-    background-color: aqua;
-    display: inline-block;
-    padding: 10px;
-    text-decoration: none;
-    color: #333333;
-    border-radius: 15px;
 }
 
 .img{
@@ -49,25 +41,111 @@ img{
     border-radius: 15px;
 }
 
+/* Home */
+
+#Home{
+    padding-top: 45px;
+}
+
 .container{
     display: flex;
-    padding: 70px;
+    padding: 10px;
     min-height: 100%;
     gap: 50px;
-    border-width: 10px;
+    /* border-width: 10px;
     border-style: solid;
-    border-color: rgb(21, 255, 0);
+    border-color: rgb(21, 255, 0); */
 }
 
 .box{
-    height: 500px;
+    height: 250px;
     width: 100%;
     border-width: 10px;
-    border-style: solid;
-    border-color: blue;
+    /* border-style: solid;
+    border-color: blue; */
     padding: 10px;
 }
 
-#content{
-    display: none;
+#Home img{
+    width: 400px;
+    height: auto;
+    padding-left: 20%;
+    padding-top: 10%;
+}
+
+.text-box p{
+    font-size: 20px;
+}
+
+#Home .text-box{
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.larger-text{
+    padding-top: 10%;
+    padding-left: 5%;
+    font-size: 35px;
+}
+
+.medium-text{
+    padding-left: 5%;
+    font-size: 25px;
+}
+
+.button{
+    padding-left: 75%;
+}
+
+.button a{
+    background-color: #000;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 7px;
+    text-decoration: none;
+    border-style: solid;
+    border-color: #000;
+    transition: background-color 0.75s ease, color 0.75s ease, transform 0.75s ease;
+}
+
+.button a:hover{
+    background-color: #ffffff;
+    color: #000;
+    transform: translateX(-50%);
+}
+
+/* Navbar */
+
+.navbar{
+    display: inline-block;
+    position: fixed;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+.navbar a{
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    position: relative;
+    padding: 0 25px;
+}
+
+.navbar a:hover{
+   font-weight: bolder;
+}
+
+.navbar a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #000;
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    transform: translateX(-50%);
+    transition: width 0.75s ;
+}
+.navbar a:hover::after{
+    width: 100%;
 }
