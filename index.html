@@ -24,9 +24,6 @@
     <div id="Home">
         <div class="container">
             <div class="box">
-                <img src="images/home-page.png" alt="pencil icon, paper icon and folder icon">
-            </div>
-            <div class="box">
                 <div class="larger-text">
                     <p><b>Welcome to NoteVault</b></p>
                 </div>
@@ -50,6 +47,11 @@
     <!-- Notes Section -->
     <div id="Notes">
         <div class="larger-text">Your notes:</div>
+        <div class="medium-text">Search:</div>
+        <div class="search-container">
+            <input class="input" type="text" id="searchInput" placeholder="Search notes by title..." oninput="searchNotes()">
+        </div>
+        <br>
         <div class="container" id="notesContainer">
             <!-- Notes will appear here -->
         </div>
@@ -58,18 +60,22 @@
     <!-- Add Notes Section -->
     <div id="Add">
         <div class="larger-text">Add notes:</div>
-            <div class="input-container">
-                <input placeholder="Enter title" class="input-field" id="noteTitle" type="text">
-                <label for="input-field" class="input-label">Enter text</label>
-                <span class="input-highlight"></span>
-            </div>
-            <div class="input-container">
-                <input placeholder="Enter description" class="input-field" id="noteContent" rows="1" required></input>
-                <label for="input-field" class="input-label">Enter text</label>
-                <span class="input-highlight"></span>
-            </div>
-            <div class="button">
-                <a id="addNoteButton">Add Note</a>
+        <div class="container">
+            <div class="box">
+                <div class="input-container">
+                    <input placeholder="Enter title" class="input-field" id="noteTitle" type="text">
+                    <label for="input-field" class="input-label">Enter text</label>
+                    <span class="input-highlight"></span>
+                </div>
+                <br>
+                <div class="input-container">
+                    <input placeholder="Enter description" class="input-field" id="noteContent" rows="1" required></input>
+                    <label for="input-field" class="input-label">Enter text</label>
+                    <span class="input-highlight"></span>
+                </div>
+                <div class="button">
+                    <a id="addNoteButton">Add Note</a>
+                </div>
             </div>
         </div>
     </div>
@@ -80,16 +86,3 @@
 
 </body>
 </html>
-
-
-<!-- Toggle text and mode -->
-
-<!-- <div class="box">
-    <button id="toggleButton">Toggle</button>
-        <div id="content">
-            <p>This is some text</p>
-        </div>
-</div>
-<div class="box">
-    <button id="toggleMode">Toggle Mode</button>
-</div> -->

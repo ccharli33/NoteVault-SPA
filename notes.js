@@ -1,20 +1,21 @@
-// ====== Load Notes ======
+// -----Load Notes-----
 function loadNotes() {
     return JSON.parse(localStorage.getItem('notes')) || [];
 }
 
-// ====== Save Notes ======
+// -----Save Notes-----
 function saveNotes(notes) {
     localStorage.setItem('notes', JSON.stringify(notes));
 }
 
-// ====== Display Notes ======
-function displayNotes() {
+function displayNotes(filteredNotes = null) {
     const container = document.getElementById('notesContainer');
     container.innerHTML = '';
-    const notes = loadNotes();
+
+    const notes = filteredNotes || loadNotes();
+
     if (notes.length === 0) {
-        container.innerHTML = '<p>No notes yet. Add one!</p>';
+        container.innerHTML = '<p>No notes found.</p>';
         return;
     }
 
@@ -51,7 +52,7 @@ function displayNotes() {
     });
 }
 
-// ====== Add Note ======
+// -----Add Note-----
 document.getElementById('addNoteButton').addEventListener('click', () => {
     const titleInput = document.getElementById('noteTitle');
     const contentInput = document.getElementById('noteContent');
@@ -74,7 +75,7 @@ document.getElementById('addNoteButton').addEventListener('click', () => {
     displayNotes();
 });
 
-// ====== Edit Note ======
+// -----Edit Note-----
 function editNote(index) {
     const notes = loadNotes();
     const newTitle = prompt('Edit note title:', notes[index].title);
@@ -89,7 +90,7 @@ function editNote(index) {
     displayNotes();
 }
 
-// ====== Delete Note ======
+// -----Delete Note-----
 function deleteNote(index) {
     const notes = loadNotes();
     if (confirm('Are you sure you want to delete this note?')) {
@@ -99,5 +100,21 @@ function deleteNote(index) {
     }
 }
 
-// ====== Initial Display ======
+// -----Search Notes-----
+function searchNotes() {
+    // Sets to lowercase so can search the notes
+    const query = document.getElementById('searchInput').value.toLowerCase();
+
+    // Load notes so they can be searched
+    const notes = loadNotes();
+
+    // Filters notes based off search
+    const filtered = notes.filter(note =>
+        note.title.toLowerCase().includes(query)
+    );
+
+    displayNotes(filtered);
+}
+
+// Initial Display-----
 displayNotes();
