@@ -4,71 +4,83 @@
 <head>
     <title>NoteVault</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="notes.js" defer></script>
 </head>
 
-<!-- Navbar -->
+<body>
 
-<div class="navbar">
-    <nav>
-
-        <div class="links-container">
-            <a href="#Home">Home</a>
-            <a href="#Notes">Notes</a>
-            <a href="#Add">Add</a>
-        </div>
-
-    </nav>
-</div>
-
-<div id="Home">
-    <div class="container">
-        <div class="box">
-            <img src="images/home-page.png" alt="pencil icon, paper icon and folder icon">
-        </div>
-
-        <div class="box">
-            <div class="larger-text">
-                <p><b>Welcome to NoteVault</b></p>
+    <!-- Navbar -->
+    <div class="navbar">
+        <nav>
+            <div class="links-container">
+                <a href="#Home">Home</a>
+                <a href="#Notes">Notes</a>
+                <a href="#Add">Add</a>
             </div>
-            <div class="medium-text">
-                <p>Write it. Save it. Find it.</p>
-            </div>
-        </div>
-
+        </nav>
     </div>
-    <div class="container">
-        <div class="text-box">
+
+    <!-- Home Section -->
+    <div id="Home">
+        <div class="container">
             <div class="box">
-                <p><br>Welcome to NoteVault — a fast, responsive note-taking app designed to help you store, sort, and manage your ideas with ease. Create sections, add notes, and filter your content instantly, all within a seamless single-page experience. Stay organised, stay productive.</p>
-                <div class="button">
-                    <a href="#Notes">Click here to get started</a>
+                <img src="images/home-page.png" alt="pencil icon, paper icon and folder icon">
+            </div>
+            <div class="box">
+                <div class="larger-text">
+                    <p><b>Welcome to NoteVault</b></p>
+                </div>
+                <div class="medium-text">
+                    <p>Write it. Save it. Find it.</p>
                 </div>
             </div>
         </div>
-</div>
-
-<div id="Notes">
-    <div class="larger-text">Your notes:</div>
-    <div class="container" id="notesContainer">
-        <!-- Here is where the notes are fetched from JSON file -->
-    </div>
-</div>
-
-<div id="Add">
-    <div class="larger-text">Add notes:</div>
-    <div class="container">
-        <div class="box">
-
-        </div>
-        <div class="box">
-            
+        <div class="container">
+            <div class="text-box">
+                <div class="box">
+                    <p><br>Welcome to NoteVault — a fast, responsive note-taking app designed to help you store, sort, and manage your ideas with ease. Create sections, add notes, and filter your content instantly, all within a seamless single-page experience. Stay organised, stay productive.</p>
+                    <div class="button">
+                        <a href="#Notes">Click here to get started</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<script src="notes.js"></script>
+    <!-- Notes Section -->
+    <div id="Notes">
+        <div class="larger-text">Your notes:</div>
+        <div class="container" id="notesContainer">
+            <!-- Notes will appear here -->
+        </div>
+    </div>
+
+    <!-- Add Notes Section -->
+    <div id="Add">
+        <div class="larger-text">Add notes:</div>
+            <div class="input-container">
+                <input placeholder="Enter title" class="input-field" id="noteTitle" type="text">
+                <label for="input-field" class="input-label">Enter text</label>
+                <span class="input-highlight"></span>
+            </div>
+            <div class="input-container">
+                <input placeholder="Enter description" class="input-field" id="noteContent" rows="1" required></input>
+                <label for="input-field" class="input-label">Enter text</label>
+                <span class="input-highlight"></span>
+            </div>
+            <div class="button">
+                <a id="addNoteButton">Add Note</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="Footer">
+        <h1>This is the footer</h1>
+    </div>
+
+</body>
 </html>
+
 
 <!-- Toggle text and mode -->
 
