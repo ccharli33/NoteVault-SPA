@@ -62,26 +62,42 @@
         <div class="larger-text">Add notes:</div>
         <div class="container">
             <div class="box">
-                <div class="input-container">
-                    <input placeholder="Enter title" class="input-field" id="noteTitle" type="text">
-                    <label for="input-field" class="input-label">Enter text</label>
-                    <span class="input-highlight"></span>
+                <div class="upload">
+                    <div class="medium-text">
+                        <p>Add .txt file</p>
+                    </div>
+                    <input type="file" id="file_input" accept=".txt"/>
+                    <button onclick="upload_txt()">Upload & Save</button>
                 </div>
-                <br>
-                <div class="input-container">
-                    <input placeholder="Enter description" class="input-field" id="noteContent" rows="1" required></input>
-                    <label for="input-field" class="input-label">Enter text</label>
-                    <span class="input-highlight"></span>
+            </div>
+
+            <!-- Edit uploaded note -->
+            <div class="box">
+                <div class="edit">
+                    <div class="medium-text">
+                        <p>Edit notes</p>
+                    </div>
+                    <textarea id="editor" rows="8" cols="50"></textarea><br>
+                    <button onclick="save_edits()">Save Changes</button>
                 </div>
-                <div class="button">
-                    <a id="addNoteButton">Add Note</a>
+            </div>
+
+            <!-- Download notes as JSON -->
+            <div class="box">
+                <div class="download">
+                    <div class="medium-text">
+                        <p>Download notes</p>
+                    </div>
+                    <button onclick="download_JSON()">Download JSON</button>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="Footer">
-        <h1>This is the footer</h1>
+        <div class="medium-text">
+            <a href="#Home">Back to the top!</a>
+        </div>
     </div>
 
 </body>

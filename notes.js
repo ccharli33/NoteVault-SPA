@@ -1,120 +1,123 @@
-// -----Load Notes-----
-function loadNotes() {
-    return JSON.parse(localStorage.getItem('notes')) || [];
-}
+let current_key = null;
 
-// -----Save Notes-----
-function saveNotes(notes) {
-    localStorage.setItem('notes', JSON.stringify(notes));
-}
+// Allow user to upload .txt file for them to save as notes
+function upload_txt() {
+  const file = document.getElementById("file_input").files[0];
+  if (!file) return alert("Select a .txt file");
 
-function displayNotes(filteredNotes = null) {
-    const container = document.getElementById('notesContainer');
-    container.innerHTML = '';
+  const reader = new FileReader();
 
-    const notes = filteredNotes || loadNotes();
+  reader.onload = function(e) {
+    const text = e.target.result;
 
-    if (notes.length === 0) {
-        container.innerHTML = '<p>No notes found.</p>';
-        return;
-    }
-
-    notes.forEach((note, index) => {
-        const noteDiv = document.createElement('div');
-        noteDiv.className = 'note';
-
-        const title = document.createElement('h3');
-        title.textContent = note.title;
-        noteDiv.appendChild(title);
-
-        const content = document.createElement('p');
-        content.textContent = note.content;
-        noteDiv.appendChild(content);
-
-        const date = document.createElement('small');
-        date.textContent = `Created on: ${note.date}`;
-        date.className = 'date';
-        noteDiv.appendChild(date);
-
-        const editBtn = document.createElement('button');
-        editBtn.textContent = 'Edit';
-        editBtn.className = 'notes-button';
-        editBtn.onclick = () => editNote(index);
-        noteDiv.appendChild(editBtn);
-
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = 'Delete';
-        deleteBtn.className = 'notes-button';
-        deleteBtn.onclick = () => deleteNote(index);
-        noteDiv.appendChild(deleteBtn);
-
-        container.appendChild(noteDiv);
-    });
-}
-
-// -----Add Note-----
-document.getElementById('addNoteButton').addEventListener('click', () => {
-    const titleInput = document.getElementById('noteTitle');
-    const contentInput = document.getElementById('noteContent');
-    const title = titleInput.value.trim();
-    const content = contentInput.value.trim();
-    if (title === '' || content === '') return;
-
+    // Layout for JSON file
     const note = {
-        title: title,
-        content: content,
-        date: new Date().toLocaleString()
+      note_ID: Date.now().toString(),
+      file_name: file.name,
+      date_created: new Date().toISOString(),
+      content: text
     };
 
-    const notes = loadNotes();
-    notes.push(note);
-    saveNotes(notes);
+    // Creating note name for JSON file
+    const key = "note_" + note.note_ID;
+    localStorage.setItem(key, JSON.stringify(note));
 
-    titleInput.value = '';
-    contentInput.value = '';
-    displayNotes();
-});
+    current_key = key;
 
-// -----Edit Note-----
-function editNote(index) {
-    const notes = loadNotes();
-    const newTitle = prompt('Edit note title:', notes[index].title);
-    if (newTitle === null || newTitle.trim() === '') return;
-    const newContent = prompt('Edit note content:', notes[index].content);
-    if (newContent === null || newContent.trim() === '') return;
+    document.getElementById("editor").value = text;
 
-    notes[index].title = newTitle.trim();
-    notes[index].content = newContent.trim();
-    // Keep original date
-    saveNotes(notes);
-    displayNotes();
+    alert("Saved to Local Storage as JSON");
+  };
+
+  reader.readAsText(file);
+  load_notes_list();
 }
 
-// -----Delete Note-----
-function deleteNote(index) {
-    const notes = loadNotes();
-    if (confirm('Are you sure you want to delete this note?')) {
-        notes.splice(index, 1);
-        saveNotes(notes);
-        displayNotes();
+// Save edits made by user in textbox
+function save_edits() {
+  if (!current_key) return alert("No note loaded");
+
+  const stored = localStorage.getItem(current_key);
+  const note = JSON.parse(stored);
+
+  // Place uploaded file content in editor box
+  note.content = document.getElementById("editor").value;
+  note.last_edited = new Date().toISOString();
+
+  localStorage.setItem(current_key, JSON.stringify(note));
+
+  alert("Changes saved");
+}
+
+// User can download JSON from application
+function download_JSON() {
+  if (!current_key) return alert("No note available");
+
+  // Retreive note from local storage
+  const jsonString = localStorage.getItem(current_key);
+
+  // Create the file using "Blob"
+  const blob = new Blob([jsonString], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = current_key + ".json";
+  a.click();
+
+  URL.revokeObjectURL(url);
+  load_notes_list();
+}
+
+// -----Display Notes-----
+function display_notes() {
+    const container = document.getElementById("notesContainer");
+    container.innerHTML = "";
+
+    // Loop through all the notes for them to be displayed
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+
+        // All note ID's start with "note_"
+        // Check to find notes to be displayed
+        if (key.startsWith("note_")) {
+            const note = JSON.parse(localStorage.getItem(key));
+
+            // Create html statments to display information
+            const card = document.createElement("div");
+            card.className = "note";
+            card.innerHTML = `
+                <div class="note-title">${note.file_name}</div>
+                <div class="note-content">${note.content}</div>
+                <div class="note-date">${new Date(note.date_created).toLocaleString()}</div>
+            `;
+
+            // Moves the note into the edit box, allows users to edit exsisting notes
+            card.onclick = () => {
+                current_key = key;
+                document.getElementById("editor").value = note.content;
+            };
+
+            container.appendChild(card);
+        }
     }
 }
 
 // -----Search Notes-----
-function searchNotes() {
+function search_notes() {
     // Sets to lowercase so can search the notes
     const query = document.getElementById('searchInput').value.toLowerCase();
 
     // Load notes so they can be searched
-    const notes = loadNotes();
+    const notes = localStorage; 
 
     // Filters notes based off search
     const filtered = notes.filter(note =>
         note.title.toLowerCase().includes(query)
     );
 
-    displayNotes(filtered);
+    load_notes(filtered);
 }
 
-// Initial Display-----
-displayNotes();
+// Load notes on page load
+window.onload = display_notes;

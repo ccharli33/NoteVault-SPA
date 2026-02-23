@@ -27,8 +27,31 @@ h1{
     margin-bottom: 20px;
 }
 
-#Home img{
-    border-radius: 15px;
+/* Navbar */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+}
+
+.navbar a {
+  position: relative;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  padding-left: 25px;
+  padding-right: 25px;
+  transition: color 0.2s ease;
 }
 
 /* Home */
@@ -134,6 +157,46 @@ h1{
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
 }
 
+button {
+    background-color: var(--button-color);
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 7px;
+    text-decoration: none;
+    border-style: solid;
+    border-color: var(--button-color);
+    transition: background-color 0.75s ease, color 0.75s ease;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: var(--button-color);
+    cursor: pointer;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+input { 
+    padding-bottom: 30px;
+}
+
+#file_input::file-selector-button {
+    background-color: var(--button-color);
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 7px;
+    text-decoration: none;
+    border-style: solid;
+    border-color: var(--button-color);
+    transition: background-color 0.75s ease, color 0.75s ease;
+}
+
+#file_input::file-selector-button:hover {
+    background-color: #ffffff;
+    color: var(--button-color);
+    cursor: pointer;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
 /* Notes */
 
 #Notes .larger-text {
@@ -169,7 +232,7 @@ h1{
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.note h3 {
+.note-title {
     margin: 0 0 8px;
     font-size: 1.2rem;
     word-wrap: break-word;
@@ -185,7 +248,7 @@ h1{
     white-space: normal;
 }
 
-.note .date {
+.note-date {
     display: block;
     margin-bottom: 10px;
     color: #666;
@@ -218,10 +281,13 @@ h1{
 }
 
 #Add .container {
-    max-width: 600px;
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
     margin: 80px auto;
     padding: 10px;
-    background: #ffffff;
+    text-align: center;
+    background: transparent;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
@@ -230,12 +296,6 @@ h1{
     font-size: 2.2rem;
     margin-bottom: 10px;
     text-align: center;
-}
-
-#Add .container {
-    text-align: center;
-    color: #666;
-    margin-bottom: 40px;
 }
 
 .input-container {
@@ -287,35 +347,6 @@ h1{
 
 #Add .box {
     text-align: center;
-}
-
-/* Navbar */
-
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #ffffff;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  padding: 20px 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  z-index: 1000;
-}
-
-/* Links */
-
-.navbar a {
-  position: relative;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  color: #333;
-  padding-left: 25px;
-  padding-right: 25px;
-  transition: color 0.2s ease;
 }
 
 /* Hover state */
@@ -381,3 +412,14 @@ h1{
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
 }
 
+/* Footer */
+
+#Footer {
+    height: 100px;
+    text-align: center;
+    padding-left: 0;
+}
+
+#Footer .medium-text {
+    padding-left: 0;
+}
