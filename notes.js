@@ -103,21 +103,5 @@ function display_notes() {
     }
 }
 
-// -----Search Notes-----
-function search_notes() {
-    // Sets to lowercase so can search the notes
-    const query = document.getElementById('searchInput').value.toLowerCase();
-
-    // Load notes so they can be searched
-    const notes = localStorage; 
-
-    // Filters notes based off search
-    const filtered = notes.filter(note =>
-        note.title.toLowerCase().includes(query)
-    );
-
-    load_notes(filtered);
-}
-
 // Load notes on page load
 window.onload = display_notes;
