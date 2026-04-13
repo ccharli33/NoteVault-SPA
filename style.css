@@ -423,3 +423,17 @@ input {
 #Footer .medium-text {
     padding-left: 0;
 }
+
+@media (max-width: 1000px) {
+    body {
+        font-size: 14px;
+    }
+
+    #Add .container {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        min-height: 100%;
+        gap: 50px;
+    }
+}
